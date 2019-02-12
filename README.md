@@ -1,1 +1,1 @@
-# product-hunt
+# Product Hunt
