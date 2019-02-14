@@ -3,26 +3,62 @@ import PostItem from "./PostItem";
 import { Row, Col } from "reactstrap";
 import DatePicker from "react-date-picker";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Route, Switch } from "react-router-dom";
 
 import "./PostList.css";
 import getPosts from "../api/posts";
-import ItemModal from "./modal";
-import Thumbnail from "./postItem/Thumbnail";
-import Content from "./postItem/Content";
+import Favourites from "./Favourites";
 
 class PostList extends Component {
   constructor(props) {
     super(props);
-    this.state = { posts: [], startDate: new Date(), modal: false, modalId: 0 };
+    this.state = {
+      posts: [],
+      startDate: new Date(),
+      modal: false,
+      modalId: 0,
+      liked: [],
+      likedPosts: []
+    };
     this.handleDateChange = this.handleDateChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleLike = this.handleLike.bind(this);
     this.toggle = this.toggle.bind(this);
+
+    this.updateLikedPosts = this.updateLikedPosts.bind(this);
+    this.getLikedPosts = this.getLikedPosts.bind(this);
   }
 
   componentDidMount() {
     getPosts().then(posts => {
       this.setState({ posts: posts });
+      this.props.updateState({ posts: posts });
     });
+  }
+
+  handleLike(id) {
+    console.log("handleLike");
+    let newLiked = this.state.liked.slice();
+    newLiked.push(id);
+    this.setState(
+      {
+        liked: newLiked
+      },
+      () => {
+        this.updateLikedPosts();
+      }
+    );
+  }
+
+  updateLikedPosts() {
+    let likedPosts = [];
+    likedPosts = this.state.liked.map(id => {
+      return this.state.posts[id];
+    });
+    this.setState({ likedPosts });
+  }
+
+  getLikedPosts() {
+    return this.state.likedPosts;
   }
 
   handleDateChange = date => {
@@ -31,10 +67,6 @@ class PostList extends Component {
       this.setState({ posts: posts, startDate: date });
     });
   };
-
-  handleClick(e) {
-    console.log("e :", e.currentTarget.id);
-  }
 
   toggle(e) {
     this.setState(prevState => ({
@@ -49,15 +81,13 @@ class PostList extends Component {
     for (const post in posts) {
       if (posts.hasOwnProperty(post)) {
         const element = posts[post];
-
-        console.log("post :", post);
-        // console.log("element :", element);
         postList.push(
           <PostItem
             key={post}
             id={post}
             post={element}
             handleClick={this.toggle}
+            handleLike={this.handleLike}
           />
         );
       }
@@ -72,25 +102,30 @@ class PostList extends Component {
     postList = postList.length ? postList : <p>Loading posts...</p>;
 
     return (
-      <Row>
-        <Col lg="8" md="8" sm="12" xs="12">
-          <p>View Posts of</p>
-          <DatePicker
-            maxDate={new Date()}
-            value={this.state.startDate}
-            onChange={this.handleDateChange}
-          />
-          <ul className="posts-list">{postList}</ul>
-        </Col>
-        <Col
-          lg={{ size: "3", offset: 1 }}
-          md={{ size: "3", offset: 1 }}
-          sm="12"
-          xs="12"
-        >
-          Your Favourites
-        </Col>
-      </Row>
+      <>
+        <Row>
+          <Col lg="8" md="8" sm="12" xs="12">
+            <p>View Posts of</p>
+            <DatePicker
+              maxDate={new Date()}
+              value={this.state.startDate}
+              onChange={this.handleDateChange}
+            />
+            <ul className="posts-list">{postList}</ul>
+          </Col>
+          <Col
+            lg={{ size: "3", offset: 1 }}
+            md={{ size: "3", offset: 1 }}
+            sm="12"
+            xs="12"
+          >
+            <Favourites
+              likes={this.state.liked}
+              likedPosts={this.state.likedPosts}
+            />
+          </Col>
+        </Row>
+      </>
     );
   }
 }

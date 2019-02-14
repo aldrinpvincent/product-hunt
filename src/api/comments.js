@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const getComments = async postId => {
+  if (!postId) return [];
   let url = `https://api.producthunt.com/v1/posts/${postId}/comments`;
 
   try {

@@ -10,17 +10,23 @@ class LikeButton extends Component {
   }
 
   handleClick(e) {
+    console.log("e :", e.target.id);
     e.stopPropagation();
     this.setState({
       liked: !this.state.liked
     });
+    this.props.handleLike(e.target.id);
   }
 
   render() {
     const label = this.state.liked ? "Unlike" : "Like";
     return (
       <div className="like-button">
-        <button className="btn btn-primary" onClick={this.handleClick}>
+        <button
+          id={this.props.id}
+          className="btn btn-primary"
+          onClick={this.handleClick}
+        >
           {label}
         </button>
       </div>

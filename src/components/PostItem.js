@@ -57,7 +57,7 @@ class PostItem extends Component {
           catogory={this.props.post.catogory}
         />
 
-        <LikeButton id={this.props.id} />
+        <LikeButton id={this.props.id} handleLike={this.props.handleLike} />
       </li>
     );
   }
