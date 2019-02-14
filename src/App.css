@@ -1,0 +1,11 @@
+.App-header {
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  height: 66px;
+  position: relative;
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+  align-items: center;
+  display: flex;
+}
+

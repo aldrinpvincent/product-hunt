@@ -1,0 +1,54 @@
+.posts-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.post-item,
+.modal-content {
+  overflow: hidden;
+  position: relative;
+  background: white;
+  margin: 5px 0;
+  box-shadow: 0 0 15px lightgrey;
+  padding: 10px 10px 0 10px;
+  cursor: pointer;
+  display: block !important;
+}
+
+.thumbnail {
+  margin-right: 10px;
+  position: relative;
+  float: left;
+}
+.thumbnail img {
+  height: 80px;
+  width: 80px;
+}
+
+.content {
+  display: flex;
+  flex-grow: 1;
+}
+
+.like-button {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+}
+
+.meta_info {
+  height: 24px;
+  align-items: center;
+  bottom: 20px;
+}
+
+.content-wrapper {
+  float: left;
+}
+
+.comments {
+  position: relative;
+  float: left;
+  width: 100%;
+}
