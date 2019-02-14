@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Modal } from "reactstrap";
-import CommentItem from "../components/commments/CommentItem";
+import CommentItem from "../components/comments/CommentItem";
 import getComments from "../api/comments";
 
 class ItemModal extends Component {

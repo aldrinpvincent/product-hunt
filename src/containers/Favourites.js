@@ -1,5 +1,5 @@
 import React from "react";
-import FavItem from "../components/FavItem/FavItem";
+import FavItem from "../components/favourites/FavItem";
 
 const Favourites = props => {
   let posts = props.likedPosts;
