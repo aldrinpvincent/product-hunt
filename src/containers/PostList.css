@@ -1,0 +1,114 @@
+.posts-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.posts-list :hover {
+  background: #f3f3f3;
+}
+
+.post-item,
+.modal-content {
+  overflow: hidden;
+  position: relative;
+  background: white;
+  margin: 5px 0;
+  box-shadow: 0 0 15px lightgrey;
+  padding: 10px 10px 0 10px;
+  cursor: pointer;
+  display: block !important;
+}
+
+
+
+.thumbnail {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  float: left;
+}
+.thumbnail img {
+  height: 100px;
+  width: 80px;
+}
+
+.content {
+  padding: 4px 0px 0 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.tag-line {
+  font-size: 14px;
+  color: rgb(153, 153, 153);
+}
+
+.like-button {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+}
+
+.meta_info {
+  font-size: 14px;
+  color: #2d89a7;
+  border: 1px solid #e8e8e8;
+  padding: 2px 2px;
+}
+
+.comments {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+.date-pick {
+  margin: 10px 0px;
+}
+.date-pick-text {
+  font-size: 16px;
+}
+.comments-label {
+  color: rgb(153, 153, 153);
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.comment-wrapper {
+  list-style: none;
+  width: 100%;
+  box-shadow: 0 0 2px gray;
+  padding: 5px 5px 3px 5px;
+  margin: 5px 0px;
+}
+.comment-image {
+  margin-right: 10px;
+  position: relative;
+  float: left;
+}
+.comment-image img {
+  border-radius: 50%;
+}
+.load-button {
+  width: 100%;
+  float: left;
+  margin-bottom: 10px;
+}
+
+.fav-label {
+  font-size: 18px;
+  margin: 0;
+  font-weight: bold;
+  padding: 9px 0;
+}
+.fav-thumbnail {
+  margin-right: 10px;
+  position: relative;
+  float: left;
+  margin-bottom: 10px;
+}
+
+.fav-thumbnail img {
+  height: 99px;
+  width: 80px;
+}

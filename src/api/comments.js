@@ -15,7 +15,6 @@ const getComments = async postId => {
     });
     const commentsData = await commentsResponse.data;
     const commentsList = await processcommentsData(commentsData.comments);
-    await console.log("commentsList :", commentsList);
     return commentsList;
   } catch (e) {
     console.error("Looks like there was a problem on getting comments. " + e);

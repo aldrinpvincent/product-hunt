@@ -10,12 +10,11 @@ class LikeButton extends Component {
   }
 
   handleClick(e) {
-    console.log("e :", e.target.id);
     e.stopPropagation();
     this.setState({
       liked: !this.state.liked
     });
-    this.props.handleLike(e.target.id);
+    this.props.handleLike(e.target.id, !this.state.liked);
   }
 
   render() {

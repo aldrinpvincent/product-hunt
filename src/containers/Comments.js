@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import CommentItem from "./CommentItem";
+import { Modal } from "reactstrap";
+import CommentItem from "../components/commments/CommentItem";
 import getComments from "../api/comments";
 
 class ItemModal extends Component {
@@ -12,19 +12,20 @@ class ItemModal extends Component {
 
   componentDidMount() {
     getComments(this.props.modalId).then(comments => {
-      // console.log("comments :", comments);
       this.setState({ comments: comments });
     });
   }
 
-  loadMoreComments(prevState) {
-    this.setState({ commentCount: prevState.commentCount + 5 });
+  loadMoreComments() {
+    let currentCount = this.state.commentCount;
+    this.setState({ commentCount: currentCount + 5 });
   }
 
   render() {
     let commentList = [];
     const { comments } = this.state;
 
+    const loadMore = this.state.commentCount < comments.length ? true : false;
     const commentCount =
       this.state.commentCount < comments.length
         ? this.state.commentCount
@@ -34,31 +35,32 @@ class ItemModal extends Component {
       const comment = comments[i];
       commentList.push(<CommentItem key={comment.id} comment={comment} />);
     }
-    // comments.forEach(comment => {
-    //   commentList.push(<CommentItem key={comment.id} comment={comment} />);
-    // });
     commentList = commentList.length ? commentList : <p>Loading comments...</p>;
+
+    const loadButton = loadMore ? (
+      <div>
+        <button
+          className="btn btn-info load-button"
+          onClick={this.loadMoreComments}
+        >
+          Load more comments...
+        </button>
+      </div>
+    ) : null;
+
     return (
       <Modal
         isOpen={this.props.show}
         toggle={this.props.toggle}
-        className={this.props.className}
         autoFocus={true}
         size="lg"
       >
         {this.props.children}
         <div className="comments">
-          <p>Comments</p>
+          <p className="comments-label">COMMENTS</p>
           {<ul> {commentList}</ul>}
-          <div>
-            <button
-              style={{ float: "left", width: "100%" }}
-              onClick={this.loadMoreComments}
-            >
-              Load more....
-            </button>
-          </div>
         </div>
+        {loadButton}
       </Modal>
     );
   }

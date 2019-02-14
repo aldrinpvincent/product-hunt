@@ -5,10 +5,10 @@ const Content = props => {
       <h3 className="content" itemProp="name">
         {props.name}
       </h3>
-      <p className="" itemProp="itemDescription">
+      <p className="tag-line" itemProp="itemDescription">
         {props.tagline}
       </p>
-      <p className="meta_info">{props.catogory}</p>
+      <span className="meta_info">{props.catogory}</span>
     </div>
   );
 };

@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import Content from "./postItem/Content";
-import Thumbnail from "./postItem/Thumbnail";
-import LikeButton from "./postItem/LikeButton";
-import ItemModal from "./modal";
+import Content from "../posts/Content";
+import Thumbnail from "../posts/Thumbnail";
+import ItemModal from "../../containers/Comments";
 
-class PostItem extends Component {
+class FavItem extends Component {
   constructor(props) {
     super(props);
     this.state = { modal: false, modalId: 0 };
@@ -12,8 +11,6 @@ class PostItem extends Component {
   }
 
   handleClick(e) {
-    // console.log("click :");
-    // console.log("e.target.ParentElement.id :", e.target.parentElement.id);
     let id = e.currentTarget.id;
     e.stopPropagation();
     e.preventDefault();
@@ -43,24 +40,27 @@ class PostItem extends Component {
       </ItemModal>
     ) : null;
     return (
-      <li className="post-item" id={this.props.id} onClick={this.handleClick}>
+      <li
+        className="post-item"
+        id={this.props.post.id}
+        onClick={this.handleClick}
+      >
         {modal}
 
-        <Thumbnail
-          name={this.props.post.name}
-          src={this.props.post.image_url}
-        />
+        <div className="fav-thumbnail">
+          <img alt={this.props.post.name} src={this.props.post.image_url} />
+        </div>
 
-        <Content
-          name={this.props.post.name}
-          tagline={this.props.post.tagline}
-          catogory={this.props.post.catogory}
-        />
+        <div className="content-wrapper">
+          <h3 className="content" itemProp="name">
+            {this.props.post.name}
+          </h3>
 
-        <LikeButton id={this.props.id} handleLike={this.props.handleLike} />
+          <span className="meta_info">{this.props.post.catogory}</span>
+        </div>
       </li>
     );
   }
 }
 
-export default PostItem;
+export default FavItem;

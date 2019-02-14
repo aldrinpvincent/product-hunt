@@ -16,7 +16,6 @@ const getPosts = async date => {
     });
     const postsData = await postsResponse.data;
     const postsList = await processPostsData(postsData.posts);
-    await console.log("postsList :", postsList);
     return postsList;
   } catch (e) {
     console.error("Looks like there was a problem on getting Posts. " + e);
