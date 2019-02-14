@@ -16,13 +16,17 @@
   display: block !important;
 }
 
+.post-item :hover {
+  background: #f3f3f3;
+}
+
 .thumbnail {
   margin-right: 10px;
   position: relative;
   float: left;
 }
 .thumbnail img {
-  height: 80px;
+  height: 100px;
   width: 80px;
 }
 
@@ -44,7 +48,6 @@
 }
 
 .content-wrapper {
-  float: left;
 }
 
 .comments {

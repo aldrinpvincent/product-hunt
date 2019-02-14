@@ -28,7 +28,7 @@ class PostList extends Component {
   handleDateChange = date => {
     console.log("date :", date);
     getPosts(date).then(posts => {
-      this.setState({ posts: posts, startDate: new Date() });
+      this.setState({ posts: posts, startDate: date });
     });
   };
 
@@ -46,11 +46,28 @@ class PostList extends Component {
   render() {
     let postList = [];
     const { posts } = this.state;
-    posts.forEach(post => {
-      postList.push(
-        <PostItem key={post.id} post={post} handleClick={this.toggle} />
-      );
-    });
+    for (const post in posts) {
+      if (posts.hasOwnProperty(post)) {
+        const element = posts[post];
+
+        console.log("post :", post);
+        // console.log("element :", element);
+        postList.push(
+          <PostItem
+            key={post}
+            id={post}
+            post={element}
+            handleClick={this.toggle}
+          />
+        );
+      }
+    }
+
+    // posts.forEach(post => {
+    //   postList.push(
+    //     <PostItem key={post.id} post={post} handleClick={this.toggle} />
+    //   );
+    // });
 
     postList = postList.length ? postList : <p>Loading posts...</p>;
 
@@ -70,7 +87,9 @@ class PostList extends Component {
           md={{ size: "3", offset: 1 }}
           sm="12"
           xs="12"
-        />
+        >
+          Your Favourites
+        </Col>
       </Row>
     );
   }

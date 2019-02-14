@@ -24,16 +24,32 @@ const getPosts = async date => {
 };
 
 const processPostsData = posts => {
-  let postsList = posts.map(item => {
-    return {
-      id: item.id,
+  let postList = {};
+
+  posts.forEach(item => {
+    postList[item.id] = {
       name: item.name,
       tagline: item.tagline,
       image_url: item.thumbnail && item.thumbnail.image_url,
       catogory: item.topics[0] && item.topics[0].name
     };
   });
-  return postsList;
+
+  // console.log("postList1 :", postList);
+
+  // let postsList = [];
+
+  // postsList = posts.map(item => {
+  //   return {
+  //     id: item.id,
+  //     name: item.name,
+  //     tagline: item.tagline,
+  //     image_url: item.thumbnail && item.thumbnail.image_url,
+  //     catogory: item.topics[0] && item.topics[0].name
+  //   };
+  // });
+
+  return postList;
 };
 
 export default getPosts;

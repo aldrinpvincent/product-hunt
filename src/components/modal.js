@@ -51,7 +51,10 @@ class ItemModal extends Component {
           <p>Comments</p>
           {<ul> {commentList}</ul>}
           <div>
-            <button style={{ float: "left" }} onClick={this.loadMoreComments}>
+            <button
+              style={{ float: "left", width: "100%" }}
+              onClick={this.loadMoreComments}
+            >
               Load more....
             </button>
           </div>

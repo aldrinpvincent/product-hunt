@@ -43,11 +43,7 @@ class PostItem extends Component {
       </ItemModal>
     ) : null;
     return (
-      <li
-        className="post-item"
-        id={this.props.post.id}
-        onClick={this.handleClick}
-      >
+      <li className="post-item" id={this.props.id} onClick={this.handleClick}>
         {modal}
 
         <Thumbnail
@@ -61,7 +57,7 @@ class PostItem extends Component {
           catogory={this.props.post.catogory}
         />
 
-        <LikeButton id={this.props.post.id} />
+        <LikeButton id={this.props.id} />
       </li>
     );
   }
