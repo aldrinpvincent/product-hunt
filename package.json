@@ -2,7 +2,7 @@
   "name": "product-hunt",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://aldrinpvincent.github.io/simple-product-hunt",
+  "homepage": "https://aldrinpvincent.github.io/product-hunt",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.0",

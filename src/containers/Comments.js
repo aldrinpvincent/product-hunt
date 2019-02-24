@@ -70,7 +70,7 @@ class ItemModal extends Component {
           >
             Visit Product Page &rarr;
           </a>
-          {<ul> {commentList}</ul>}
+          <div className="comment-list">{<ul> {commentList}</ul>}</div>
         </div>
         {loadButton}
       </Modal>
