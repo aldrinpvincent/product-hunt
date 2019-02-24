@@ -61,7 +61,7 @@ class ItemModal extends Component {
       >
         {this.props.children}
         <div className="comments">
-          <p className="comments-label">COMMENTS</p>`
+          <p className="comments-label">COMMENTS</p>
           <a
             className="right"
             href={this.props.url}
