@@ -1,5 +1,7 @@
 # Product Hunt
 
+A simple demo app based on https://www.producthunt.com using ReactJS.
+
 In the project directory, you can run:
 
 ### `npm install`
