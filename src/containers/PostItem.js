@@ -24,6 +24,7 @@ class PostItem extends Component {
   render() {
     const modal = this.state.modal ? (
       <ItemModal
+        url={this.props.post.url}
         toggle={this.handleClick}
         show={this.state.modal}
         modalId={this.state.modalId}
@@ -40,6 +41,7 @@ class PostItem extends Component {
         />
       </ItemModal>
     ) : null;
+
     return (
       <li className="post-item" id={this.props.id} onClick={this.handleClick}>
         {modal}

@@ -30,7 +30,8 @@ const processPostsData = posts => {
       name: item.name,
       tagline: item.tagline,
       image_url: item.thumbnail && item.thumbnail.image_url,
-      catogory: item.topics[0] && item.topics[0].name
+      catogory: item.topics[0] && item.topics[0].name,
+      url: item.discussion_url
     };
   });
 

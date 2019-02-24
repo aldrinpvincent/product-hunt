@@ -35,7 +35,11 @@ class ItemModal extends Component {
       const comment = comments[i];
       commentList.push(<CommentItem key={comment.id} comment={comment} />);
     }
-    commentList = commentList.length ? commentList : <p>Loading comments...</p>;
+    commentList = commentList.length ? (
+      commentList
+    ) : (
+      <p className="left full-width">Loading comments...</p>
+    );
 
     const loadButton = loadMore ? (
       <div>
@@ -57,7 +61,15 @@ class ItemModal extends Component {
       >
         {this.props.children}
         <div className="comments">
-          <p className="comments-label">COMMENTS</p>
+          <p className="comments-label">COMMENTS</p>`
+          <a
+            className="right"
+            href={this.props.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit Product Page &rarr;
+          </a>
           {<ul> {commentList}</ul>}
         </div>
         {loadButton}

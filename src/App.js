@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container } from "reactstrap";
 
 import "./App.css";
-import PostList from "./containers/PostLIst";
+import PostList from "./containers/PostList";
 
 class App extends Component {
   constructor() {
