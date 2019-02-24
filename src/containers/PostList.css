@@ -123,5 +123,6 @@
 }
 
 .comment-list {
-  margin-top: 30px;
+  margin-top: 35px;
+  cursor: auto;
 }
